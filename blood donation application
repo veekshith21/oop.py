@@ -1,0 +1,108 @@
+print("******************************************************")
+print("\n********** BLOOD DONATION APPLICATION **************")
+print("******************************************************\n\n")
+print("Login/Registration Portal :-\n\t1) Admin Login\n\t2) User Login\n")
+choice = int(input("Enter Your Choice (1/2) -> "))
+
+class donor:
+  x=0 #for counting no. of donors
+  def __init__(self,name,age,sex,blood_group):
+    self.name=name
+    self.age=age
+    self.sex=sex
+    self.blood_group=blood_group
+    donor.x+=1
+
+donor_A=donor('ALOK',20,'MALE','A+')
+donor_B=donor('Ayush',44,'MALE','AB-')
+donor_C=donor('JATIN',34,'MALE','O+')
+donor_D=donor('KALPANA',29,'FEMALE','B-')
+donor_E=donor('SACHI',31,'FEMALE','A+')
+donor_F=donor('HARSHIT',33,'MALE','A-') 
+donor_G=donor('YASH',48,'MALE','A+')
+donor_H=donor('SHILPI',24,'FEMALE','A+')
+donor_I=donor('ANSHIKA',25,'FEMALE','AB+')
+donor_J=donor('BRANDON',52,'MALE','A+') 
+
+
+def blood_banks():
+  print("\n\nFollowing blood banks are avalable near you: ")
+  print("\n\n1. Shanti Blood Bank")
+  print("\n2. shankara Blood Bank")
+  print("\n3. Anupam Blood Bank")
+  print("\n4. santan Blood Bank")
+  print("\n5. satya Blood Bank")
+  print("\n6. lala lajpat rai Hospital and Blood Bank")
+
+
+def rare_blood_groups():
+  print("\nDonors with rare blood groups and their details are listed below: ")
+  print("\nNAME          AGE       SEX           BLOOD_GROUP\n")
+  print("AYUSH           44         MALE           AB-\n")
+  print("JATIN           34         MALE            O+\n")
+  print("KALPANA         29        FEMALE           B-\n")
+  print("ANSHIKA         25         MALE           AB+\n")
+
+if choice==1:
+  print("\n\n-------------------- Welcome Admin ---------------------\n")
+  username=input("Please enter your username: ")
+ ## username.lower()
+  if username == 'ashwani' or username == 'veekshith':
+    p=input("\nUsername found!\n\n Please enter your password: ")  
+    p.lower()
+    if p == 'PASSCODE':
+      print("\nLoged In successfully!")
+      print("\n\n-------------Hello Admin Welcome back-----------------")
+      print("\n\n what you want to know")
+      print("\n1. Details of the Donors")       #Only admins know the details 
+      print("\n2. Details of the Blood Banks")
+      print("\n3. Details of the donors with rare blood groups")
+      a=int(input("\n\nEnter your choice: "))
+      if a==1:
+        donor_list=[donor_A,donor_B,donor_C,donor_D,donor_E,donor_F,donor_H,donor_I,donor_J]
+        for t in donor_list:
+          print("\n")
+          print(t.__dict__)
+      elif a==2:
+        blood_banks()
+      elif a==3:
+        rare_blood_groups()
+      else:
+        print("\nInvalid Choice!")
+    else:
+      print("\nPassword doesn't match!")
+  
+  else:
+    print("\nAdmin not found. Please enter the correct Username")
+
+elif choice == 2:
+  print("\n\n-------------------- Welcome User ---------------------\n")
+  username=input("Please enter your username: ")
+  username.lower()
+  if username=='alok' or 'jatin' or 'harshit' or 'anshika' or 'shilpi':
+    p = input("\nUsername found!\n\n Please enter your password: ")  
+    p.lower()
+    if p == 'PASSCODE':
+      print("\nSigned In successfully!")
+      print("\n\n-------------Hello User Welcome back-----------------")
+      print("\n\nTell me what you want to know")
+      print("\n1. Number of the Donors available")  #Users can only know the number of donors available and not their details
+      print("\n2. Details of the Blood Banks")
+      print("\n3. Details of the donors with rare blood groups")
+      a=int(input("\n\nEnter a choice from the above: "))
+      if a==1:
+        print("\nTotal number of Donors avalable is: ",donor.x) #donor.x for counting the number of donors
+      elif a==2:
+        blood_banks()
+      elif a==3:
+        rare_blood_groups()
+      else:
+        print("\nInvalid Choice!")
+    else:
+      print("\nPassword doesn't match!")
+  
+  else:
+    print("\nUser not found. Please enter the correct Username")
+
+else:
+  print("\nWrong Choice! Please enter from the above choice only")
